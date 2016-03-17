@@ -8,6 +8,8 @@ services:
   - docker
 
 before_install:
+  - whoami
+
   - sudo apt-get install -y debootstrap schroot
 
   - cp srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
@@ -44,3 +46,4 @@ before_install:
 
 script:
   # - make build ACCOUNT=$ACCOUNT
+  - whoami
