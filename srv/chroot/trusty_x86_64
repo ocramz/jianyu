@@ -1,6 +1,6 @@
 [trusty_x86_64]
 description=Ubuntu Lucid Lynx 64 bit
 directory=/srv/chroot/trusty_x86_64
-root-users=basix
+root-users=travis
 type=directory
-users=basix
+users=travis
