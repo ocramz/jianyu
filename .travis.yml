@@ -1,0 +1,46 @@
+sudo: 
+  required
+
+language: 
+  c 
+
+services:
+  - docker
+
+before_install:
+  - sudo apt-get install -y debootstrap schroot
+
+  - cp srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
+
+  # create chroot
+  - sudo debootstrap --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
+
+  # enter chroot
+  - schroot -c trusty_x86_64 -u root
+
+  # install headers
+  - dpkg -i linux-headers-$(uname -r)
+
+  - sudo echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
+
+  - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+
+  - sudo apt-get update
+  - sudo apt-get install -y virtualbox-5.0
+
+
+
+
+
+  # # # # update APT sources
+  # - sudo echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
+
+  # - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+
+  # - sudo apt-get install -y dkms
+
+
+
+
+script:
+  # - make build ACCOUNT=$ACCOUNT
