@@ -12,15 +12,13 @@ before_install:
 
   - sudo apt-get install -y debootstrap schroot
 
+  # # copy config file
   - sudo cp srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
-
-  # create chroot
+  # # create chroot
   - sudo debootstrap --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
-
-  # enter chroot
-  - schroot -c trusty_x86_64 -u travis
-
-  # install headers
+  # #enter chroot
+  - schroot -c trusty_x86_64 -u travis -b
+  # # install headers
   - sudo dpkg -i linux-headers-$(uname -r)
 
   - sudo echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
