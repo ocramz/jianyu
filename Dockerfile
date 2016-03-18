@@ -17,7 +17,7 @@ RUN apt-get install -y wget
 RUN apt-get install -y debootstrap schroot
 
 # # directory and config file for the chroot
-RUN mkdir -p /var/chroot
+RUN sudo mkdir -p /var/chroot
 ADD etc/schroot/schroot.conf /etc/schroot/schroot.conf
 
 # # # create chroot
