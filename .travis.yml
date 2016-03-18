@@ -45,6 +45,9 @@ before_install:
   - vagrant init
   - vagrant up
 
+  # # version sanity check
+  - vagrant vbguest --status
+
 
 
 
