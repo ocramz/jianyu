@@ -39,7 +39,7 @@ before_install:
   - pwd
 
   # let's try some random Vagrant box
-  - sudo apt-get install vagrant
+  - sudo apt-get install -y vagrant
   - vagrant box add precise32 http://files.vagrantup.com/precise32.box
   - vagrant init
   - vagrant up
