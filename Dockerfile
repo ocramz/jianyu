@@ -5,6 +5,7 @@ MAINTAINER Marco Zocca, zocca.marco gmail
 # # NB: at this point, we're running as 'root'
 
 RUN useradd vbox
+USER vbox
 
 RUN apt-get update
 
