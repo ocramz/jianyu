@@ -16,11 +16,11 @@ RUN apt-get install -y wget
 # # VirtualBox installation, "schroot" strategy
 RUN apt-get install -y debootstrap schroot
 
-# ADD srv/chroot/trusty_x86_64_usrvbox /etc/schroot/chroot.d/trusty_x86_64_usrvbox
-ADD srv/chroot/trusty_x86_64_usrvbox /srv/chroot/trusty_x86_64_usrvbox
+RUN mkdir -p /var/chroot
+ADD etc/schroot/schroot.conf /etc/schroot/schroot.conf
 
 # # # create chroot
-RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/
+RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
 #   # #enter chroot
 RUN schroot -c trusty_x86_64_usrvbox -u root -b
 #   # # install headers
