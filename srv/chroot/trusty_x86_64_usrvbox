@@ -3,6 +3,6 @@ description=Ubuntu Trusty 64 bit
 directory=/srv/chroot/trusty_x86_64_usrvbox
 root-users=root
 type=directory
-users=vbox
+users=root
 personality=linux
 preserve-environment=true
