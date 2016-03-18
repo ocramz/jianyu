@@ -21,7 +21,7 @@ RUN sudo mkdir -p /var/chroot
 ADD etc/schroot/schroot.conf /etc/schroot/schroot.conf
 
 # # # create chroot
-RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
+RUN sudo debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
 #   # #enter chroot
 RUN sudo schroot -v -c trusty_x86_64 -u root -b
 #   # # install headers
