@@ -1,0 +1,8 @@
+[trusty_x86_64]
+description=Ubuntu Trusty 64 bit
+directory=/srv/chroot/trusty_x86_64
+root-users=root
+type=directory
+users=vbox
+personality=linux
+preserve-environment=true
