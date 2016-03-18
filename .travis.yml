@@ -21,14 +21,14 @@ before_install:
   # # install headers
   - sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
+  # add VirtualBox repo, GPG keys, install and check
   - sudo echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
-
   - wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-
   - sudo apt-get update
   - sudo apt-get install -y virtualbox-5.0
-
   - VBoxManage --version 
+
+  - apt-get -f install ## fix dependencies (?)
 
   - lsmod
   - find /lib/modules/`uname -r` -name '*.ko' 
