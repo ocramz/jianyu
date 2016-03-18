@@ -29,8 +29,22 @@ RUN schroot -l
 # #enter chroot
 # RUN sudo schroot -v --debug=notice -c trusty_x86_64 -u root -b
 RUN sudo schroot -v -c trusty_x86_64 -b
-# # install headers
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# # install headers
 # RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
 #   # # add VirtualBox repo, GPG keys, install and check
