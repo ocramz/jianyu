@@ -1,6 +1,8 @@
 [trusty_x86_64]
-description=Ubuntu Lucid Lynx 64 bit
+description=Ubuntu Trusty 64 bit
 directory=/srv/chroot/trusty_x86_64
 root-users=travis
 type=directory
 users=travis
+personality=linux
+preserve-environment=true

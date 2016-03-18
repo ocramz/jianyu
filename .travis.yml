@@ -18,7 +18,7 @@ before_install:
   - sudo debootstrap --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
 
   # enter chroot
-  - schroot -c trusty_x86_64 -u root
+  - schroot -c trusty_x86_64 -u travis
 
   # install headers
   - sudo dpkg -i linux-headers-$(uname -r)
