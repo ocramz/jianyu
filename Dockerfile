@@ -22,7 +22,7 @@ ADD srv/chroot/trusty_x86_64_usrvbox /etc/schroot/chroot.d/trusty_x86_64_usrvbox
 # # # create chroot
 RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64_usrvbox
 #   # #enter chroot
-RUN schroot -c trusty_x86_64 -u vbox -b
+RUN schroot -c trusty_x86_64_usrvbox -u vbox -b
 #   # # install headers
 # RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
