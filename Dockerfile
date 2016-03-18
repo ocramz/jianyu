@@ -7,13 +7,14 @@ MAINTAINER Marco Zocca, zocca.marco gmail
 RUN apt-get update
 
 # # TLS-related
-RUN apt-get install -y --no-install-recommends ca-certificates debian-keyring debian-archive-keyring
-RUN apt-key update
+# RUN apt-get install -y --no-install-recommends ca-certificates debian-keyring debian-archive-keyring
+# RUN apt-key update
 
 RUN apt-get install -y wget
 
 # # VirtualBox installation, "schroot" strategy
-RUN apt-get install -y debootstrap schroot
+RUN sudo apt-get install -y debootstrap schroot
+RUN sudo chmod 4755 /usr/bin/schroot
 
 # # directory and config file for the chroot
 RUN mkdir -p /var/chroot
