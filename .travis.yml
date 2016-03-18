@@ -8,7 +8,6 @@ services:
   - docker
 
 before_install:
-  - whoami
 
   - sudo apt-get install -y debootstrap schroot
 
@@ -30,6 +29,7 @@ before_install:
 
   - apt-get -f install ## fix dependencies (?)
 
+  # where are the installed modules?
   - lsmod
   - find /lib/modules/`uname -r` -name '*.ko' 
   # - modprobe -l *
@@ -38,6 +38,11 @@ before_install:
   - ls -lsA /lib/modules/
   - pwd
 
+  # let's try some random Vagrant box
+  - sudo apt-get install vagrant
+  - vagrant box add precise32 http://files.vagrantup.com/precise32.box
+  - vagrant init
+  - vagrant up
 
 
 
