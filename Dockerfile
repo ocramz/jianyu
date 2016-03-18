@@ -26,9 +26,12 @@ RUN sudo debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
 # # check chroot
 RUN schroot -l 
 
+# # mount chroot dir
+RUN sudo mount -o remount,dev,exec /var/chroot/
+
 # #enter chroot
 # RUN sudo schroot -v --debug=notice -c trusty_x86_64 -u root -b
-RUN sudo schroot -v --debug=notice -c trusty_x86_64 -b
+RUN sudo schroot -v -c trusty_x86_64 -b
 # # install headers
 
 # RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
