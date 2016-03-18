@@ -7,4 +7,4 @@ Travis CI : [![Build Status](https://travis-ci.org/ocramz/jianyu.svg?branch=simp
 
 ## Notes
 
-The `simple` branch builds all within TravisCI, whereas the `master` branch builds a Docker container with VirtualBox/Vagrant inside. The additional layer of isolation in the `master` branch has ben introduced since the installation of VirtualBox is quite buggy (due to a )
+The `simple` branch builds all within TravisCI, whereas the `master` branch builds a Docker container with VirtualBox/Vagrant inside. The additional layer of isolation in the `master` branch has ben introduced since the installation of VirtualBox is quite buggy (due to the `vboxdrv` kernel module not building properly)
