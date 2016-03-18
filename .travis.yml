@@ -32,6 +32,9 @@ before_install:
 
   - lsmod
   - ls -lsA /lib/modules/
+  - pwd
+
+  - exit
 
 
 
