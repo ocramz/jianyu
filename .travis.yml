@@ -27,7 +27,7 @@ before_install:
   - sudo apt-get install -y virtualbox-5.0
   - VBoxManage --version 
 
-  - apt-get -f install ## fix dependencies (?)
+  - sudo apt-get -f install ## fix dependencies (?)
 
   # where are the installed modules?
   - lsmod
