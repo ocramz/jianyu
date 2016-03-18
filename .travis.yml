@@ -42,15 +42,11 @@ before_install:
   # # let's try some random Vagrant box
   - sudo apt-get install -y vagrant
   - vagrant box add base http://files.vagrantup.com/precise32.box
+
+
+script:
   - vagrant init
   - vagrant up
 
   # # version sanity check
-  - vagrant vbguest --status
-
-
-
-
-
-script:
-  - docker build -t ocramz/jianyu . 
+  - vagrant vbguest --status  
