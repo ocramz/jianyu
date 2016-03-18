@@ -48,5 +48,4 @@ script:
   - vagrant init
   - vagrant up
 
-  # # version sanity check
-  - vagrant vbguest --status  
+  - vagrant status
