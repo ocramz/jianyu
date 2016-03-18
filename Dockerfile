@@ -22,9 +22,14 @@ ADD etc/schroot/schroot.conf /etc/schroot/schroot.conf
 
 # # # create chroot
 RUN sudo debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
+
+# # check chroot
+RUN schroot -l 
+
 #   # #enter chroot
-RUN sudo schroot -v -c trusty_x86_64 -u root -b
+#RUN sudo schroot -v -c trusty_x86_64 -u root -b
 #   # # install headers
+
 # RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
 #   # # add VirtualBox repo, GPG keys, install and check
