@@ -28,6 +28,10 @@ before_install:
   - sudo apt-get update
   - sudo apt-get install -y virtualbox-5.0
 
+  - VBoxManage --version 
+
+  - lsmod
+  - ls -lsA /lib/modules/
 
 
 
