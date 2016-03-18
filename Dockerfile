@@ -20,7 +20,7 @@ RUN apt-get install -y debootstrap schroot
 ADD srv/chroot/trusty_x86_64_usrvbox /srv/chroot/trusty_x86_64_usrvbox
 
 # # # create chroot
-RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64_usrvbox
+RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/
 #   # #enter chroot
 RUN schroot -c trusty_x86_64_usrvbox -u root -b
 #   # # install headers
