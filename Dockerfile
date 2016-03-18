@@ -16,7 +16,7 @@ RUN apt-get install -y debootstrap schroot
 ADD srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
 
 # # create chroot
-RUN debootstrap --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
+RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
   # #enter chroot
 RUN schroot -c trusty_x86_64 -u travis -b
   # # install headers
