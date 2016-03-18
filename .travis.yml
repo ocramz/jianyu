@@ -31,7 +31,7 @@ before_install:
   - VBoxManage --version 
 
   - lsmod
-  - modprobe --list
+  - modprobe -l *
   - modinfo vboxdrv
 
   - ls -lsA /lib/modules/
