@@ -2,47 +2,49 @@ FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
-RUN apt-get update
+RUN whoami
 
-# # TLS-related
-RUN apt-get install -y --no-install-recommends ca-certificates debian-keyring debian-archive-keyring
-RUN apt-key update
+# RUN apt-get update
 
-RUN apt-get install -y wget
+# # # TLS-related
+# RUN apt-get install -y --no-install-recommends ca-certificates debian-keyring debian-archive-keyring
+# RUN apt-key update
 
-# # VirtualBox installation, "schroot" strategy
-RUN apt-get install -y debootstrap schroot
+# RUN apt-get install -y wget
 
-ADD srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
+# # # VirtualBox installation, "schroot" strategy
+# RUN apt-get install -y debootstrap schroot
 
-# # create chroot
-RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
-  # #enter chroot
-RUN schroot -c trusty_x86_64 -u travis -b
-  # # install headers
-RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
+# ADD srv/chroot/trusty_x86_64 /etc/schroot/chroot.d/trusty_x86_64
 
-  # # add VirtualBox repo, GPG keys, install and check
-RUN echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
-RUN wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
-RUN apt-get update
-RUN apt-get install -y virtualbox-4.3 # virtualbox-5.0
-RUN VBoxManage --version 
+# # # create chroot
+# RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /srv/chroot/trusty_x86_64
+#   # #enter chroot
+# RUN schroot -c trusty_x86_64 -u travis -b
+#   # # install headers
+# RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
-  # # where are the installed modules?
-RUN lsmod
-RUN find /lib/modules/`uname -r` -name '*.ko' 
-  # - modprobe -l * ## not present anymore, use 'find' as above
-RUN modinfo vboxdrv
+#   # # add VirtualBox repo, GPG keys, install and check
+# RUN echo deb "http://download.virtualbox.org/virtualbox/debian trusty contrib" | sudo tee -a /etc/apt/sources.list
+# RUN wget -q https://www.virtualbox.org/download/oracle_vbox.asc -O- | sudo apt-key add -
+# RUN apt-get update
+# RUN apt-get install -y virtualbox-4.3 # virtualbox-5.0
+# RUN VBoxManage --version 
 
-# RUN ls -lsA /lib/modules/
-#   - pwd
+#   # # where are the installed modules?
+# RUN lsmod
+# RUN find /lib/modules/`uname -r` -name '*.ko' 
+#   # - modprobe -l * ## not present anymore, use 'find' as above
+# RUN modinfo vboxdrv
 
-  # # let's try some random Vagrant box
-RUN apt-get install -y vagrant
-RUN vagrant box add base http://files.vagrantup.com/precise32.box
-RUN vagrant init
-RUN vagrant up
+# # RUN ls -lsA /lib/modules/
+# #   - pwd
 
-  # # version sanity check
-RUN vagrant vbguest --status
+#   # # let's try some random Vagrant box
+# RUN apt-get install -y vagrant
+# RUN vagrant box add base http://files.vagrantup.com/precise32.box
+# RUN vagrant init
+# RUN vagrant up
+
+#   # # version sanity check
+# RUN vagrant vbguest --status
