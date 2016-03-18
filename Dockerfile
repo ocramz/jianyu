@@ -2,7 +2,6 @@ FROM ubuntu:14.04
 
 MAINTAINER Marco Zocca, zocca.marco gmail
 
-# # NB: at this point, we're running as 'root'
 
 
 RUN apt-get update
@@ -17,13 +16,13 @@ RUN apt-get install -y wget
 RUN apt-get install -y debootstrap schroot
 
 # # directory and config file for the chroot
-RUN sudo mkdir -p /var/chroot
+RUN mkdir -p /var/chroot
 ADD etc/schroot/schroot.conf /etc/schroot/schroot.conf
 
 # # # create chroot
-RUN sudo debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
+RUN debootstrap --foreign --variant=buildd --arch amd64 trusty /var/chroot/
 #   # #enter chroot
-RUN sudo schroot -v -c trusty_x86_64 -u root -b
+RUN schroot -v -c trusty_x86_64 -u root -b
 #   # # install headers
 # RUN sudo apt-get install -y linux-headers-3.19.0-28 linux-headers-3.19.0-30-generic # $(uname -r)
 
